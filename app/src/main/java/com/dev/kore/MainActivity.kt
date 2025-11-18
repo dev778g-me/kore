@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CatchingPokemon
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Light
 import androidx.compose.runtime.getValue
@@ -30,11 +31,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.dev.korelibrary.src.Components.Buttons.ButtonSizes
 import com.dev.korelibrary.src.Components.Buttons.GhostButton
+import com.dev.korelibrary.src.Components.Buttons.GhostIconButton
 import com.dev.korelibrary.src.Components.Buttons.Icon
-import com.dev.korelibrary.src.Components.Buttons.IconButton
+
 import com.dev.korelibrary.src.Components.Buttons.OutlinedButton
+import com.dev.korelibrary.src.Components.Buttons.OutlinedIconButton
 import com.dev.korelibrary.src.Components.Buttons.PrimaryButton
+import com.dev.korelibrary.src.Components.Buttons.PrimaryIconButton
 import com.dev.korelibrary.src.Components.Buttons.SecondaryButton
+import com.dev.korelibrary.src.Components.Buttons.SecondaryIconButton
 import com.dev.korelibrary.src.Components.Scaffold.Scaffold
 import com.dev.korelibrary.src.Components.Text
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
@@ -61,18 +66,46 @@ class MainActivity : ComponentActivity() {
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.SpaceAround
                             ) {
+                                PrimaryIconButton(
+                                    onClick = {},
+                                    content = {
+                                        Icon(
+                                            imageVector = Icons.Rounded.CatchingPokemon,
+                                            contentDescription = ""
+                                        )
+                                    }
+                                )
 
-                            }
-                            IconButton(
-                                onClick = {},
-                                content = {
+                                SecondaryIconButton(
+                                    onClick = {}
+                                ) {
                                     Icon(
-                                        imageVector = Icons.Rounded.Light,
+                                        imageVector = Icons.Rounded.CatchingPokemon,
                                         contentDescription = ""
                                     )
                                 }
-                            )
 
+
+                                GhostIconButton(
+                                    onClick = {}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.CatchingPokemon,
+                                        contentDescription = ""
+                                    )
+                                }
+
+
+                                OutlinedIconButton (
+                                    onClick = {}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.CatchingPokemon,
+                                        contentDescription = ""
+                                    )
+                                }
+
+                            }
 
 
 
