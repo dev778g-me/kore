@@ -13,15 +13,16 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
-import com.dev.korelibrary.src.Components.Themes.localContentColor
-import com.dev.korelibrary.src.Components.Themes.localTextStyle
+import com.dev.korelibrary.src.Components.Themes.LocalContentColor
+import com.dev.korelibrary.src.Components.Themes.LocalTextStyle
 
 
 @Composable
 fun Text(
     text : String,
-    textStyle: TextStyle = localTextStyle.current,
-    color : Color = localContentColor.current,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = LocalTextStyle.current,
+    color : Color = LocalContentColor.current,
     fontSize : TextUnit  = TextUnit.Unspecified,
     lineHeight : TextUnit = TextUnit.Unspecified,
     letterSpacing : TextUnit  = TextUnit.Unspecified,
@@ -35,9 +36,9 @@ fun Text(
     textOverflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    modifier: Modifier = Modifier,
 
-){
+
+    ){
 
     BasicText(
         modifier = modifier,

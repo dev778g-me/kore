@@ -1,12 +1,23 @@
 package com.dev.korelibrary.src.Components.Themes
 
+import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultDarkColorScheme
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultLightColorScheme
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultShapes
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultSizes
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultTypography
+import com.dev.korelibrary.src.Components.Themes.Ripple.koreRipple
 
 @Immutable
 data class KoreColors(
@@ -127,9 +138,49 @@ val LocalKoreSizes = staticCompositionLocalOf {
     )
 }
 
+val LocalTextStyle = staticCompositionLocalOf { TextStyle.Default }
 
-val localTextStyle = staticCompositionLocalOf { TextStyle.Default }
+
+val LocalContentColor = staticCompositionLocalOf { Color.Black }
+
+@Composable
+fun KoreTheme(
+    isDark : Boolean = isSystemInDarkTheme(),
+
+    content : @Composable () -> Unit
+){
+    val colorScheme = if (isDark) defaultDarkColorScheme else defaultLightColorScheme
+    val rippleIndication = remember(colorScheme) {
+        koreRipple(
+            // bounded = true,
+            color = colorScheme.onBackGround
+        )
+    }
+
+    CompositionLocalProvider(
+        LocalKoreColorScheme provides colorScheme,
+        LocalKoreTypography provides defaultTypography,
+        LocalIndication provides rippleIndication,
+        LocalKoreShapes provides defaultShapes,
+        LocalKoreSizes provides defaultSizes,
+        content = content
+    )
+
+}
 
 
-val localContentColor = staticCompositionLocalOf { Color.Black }
 
+
+object KoreTheme {
+    val colorScheme : KoreColors
+        @Composable get() = LocalKoreColorScheme.current
+
+    val typography : KoreTypography
+        @Composable get() = LocalKoreTypography.current
+
+    val shapes : KoreShapes
+        @Composable get() = LocalKoreShapes.current
+
+    val sizes : KoreSizes
+        @Composable get() = LocalKoreSizes.current
+}

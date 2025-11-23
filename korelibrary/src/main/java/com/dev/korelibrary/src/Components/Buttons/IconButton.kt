@@ -13,11 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.PinnableContainer
 import androidx.compose.ui.unit.dp
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
-import com.dev.korelibrary.src.Components.Themes.localContentColor
+import com.dev.korelibrary.src.Components.Themes.LocalContentColor
 
 
 enum class IconButtonSize(
@@ -39,15 +37,16 @@ internal fun BaseIconButton(
 
 ) {
     CompositionLocalProvider(
-        localContentColor provides iconButtonColors.iconButtonContentColor
+        LocalContentColor provides if (enabled) iconButtonColors.iconButtonContentColor else iconButtonColors.disabledIconContentColor
     ) {
         Box(
             modifier = modifier
                 .clip(CircleShape)
                 .background(
                     shape = CircleShape,
-                    color = iconButtonColors.iconButtonContainerColor
-                ).then(
+                    color = if (enabled) iconButtonColors.iconButtonContainerColor else iconButtonColors.disabledIconButtonColor
+                )
+                .then(
                     if (border != null) Modifier.border(
                         border = border,
                         shape = CircleShape

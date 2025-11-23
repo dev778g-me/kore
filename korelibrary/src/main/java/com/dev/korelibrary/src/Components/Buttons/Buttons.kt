@@ -24,9 +24,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
-import com.dev.korelibrary.src.Components.Themes.Ripple.koreRipple
-import com.dev.korelibrary.src.Components.Themes.localContentColor
-import com.dev.korelibrary.src.Components.Themes.localTextStyle
+import com.dev.korelibrary.src.Components.Themes.LocalContentColor
+import com.dev.korelibrary.src.Components.Themes.LocalTextStyle
 
 
 // enum class for the button sizes
@@ -52,7 +51,7 @@ internal fun BaseButton (
     content: @Composable RowScope.() -> Unit
 ){
     CompositionLocalProvider(
-        localTextStyle provides TextStyle.Default.merge(
+        LocalTextStyle provides TextStyle.Default.merge(
             when(buttonSize){
                 ButtonSizes.Small -> KoreTheme.typography.labelMedium
                 ButtonSizes.Normal -> KoreTheme.typography.titleSmall
@@ -60,7 +59,7 @@ internal fun BaseButton (
                 ButtonSizes.Large -> KoreTheme.typography.headingSmall
             }
         ),
-        localContentColor provides if (enabled) buttonColors.buttonContentColor else buttonColors.disabledButtonContentColor
+        LocalContentColor provides if (enabled) buttonColors.buttonContentColor else buttonColors.disabledButtonContentColor
     ) {
         Row(
             modifier = modifier

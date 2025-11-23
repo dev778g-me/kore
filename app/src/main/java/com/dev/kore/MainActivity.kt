@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.AbsoluteCutCornerShape
+import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CatchingPokemon
@@ -56,15 +59,172 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     content = {
                         Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                            //horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center,
-                            modifier = Modifier.fillMaxSize()
-                        ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(
+                                    horizontal = 16.dp,
 
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceAround
+                                )
+                        ) {
+                            Text(
+                                color = KoreTheme.colorScheme.primary,
+                                text = "Buttons",
+                                textStyle = KoreTheme.typography.headingMedium
+                                    .copy(
+                                        color = KoreTheme.colorScheme.primary
+                                    )
+                            )
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            Text(
+                                //color = KoreTheme.colorScheme.primary,
+                                text = "Enabled",
+                                textStyle = KoreTheme.typography.titleMedium
+                                    .copy(
+                                        color = KoreTheme.colorScheme.primary
+                                    )
+                            )
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            FlowRow(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Start,
+
+                            ) {
+                                PrimaryButton(
+                                   onClick = {}
+                               ) {
+                                   Text(
+                                       text = "Hello Kore"
+                                   )
+                               }
+                                Spacer(
+                                    modifier = Modifier.width(12.dp)
+                                )
+
+                               SecondaryButton(
+                                   onClick = {}
+                               ) {
+                                   Text(
+                                       text = "Hello Kore"
+                                   )
+                               }
+                                Spacer(
+                                    modifier = Modifier.width(12.dp)
+                                )
+                               OutlinedButton(
+                                   onClick = {}
+                               ) {
+                                   Text(
+                                       text = "Hello Kore"
+                                   )
+                               }
+
+                               GhostButton(
+                                   modifier = Modifier.padding(
+                                       top = 8.dp
+                                   ),
+                                   onClick = {}
+                               ) {
+                                   Text(
+                                       text = "Hello Kore"
+                                   )
+                               }
+                           }
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            Text(
+                                //color = KoreTheme.colorScheme.primary,
+                                text = "Disabled",
+                                textStyle = KoreTheme.typography.titleMedium
+                                    .copy(
+                                        color = KoreTheme.colorScheme.primary
+                                    )
+                            )
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            FlowRow(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Start,
+
+                                ) {
+                                PrimaryButton(
+                                    enabled = false,
+                                    onClick = {}
+                                ) {
+                                    Text(
+                                        text = "Hello Kore"
+                                    )
+                                }
+                                Spacer(
+                                    modifier = Modifier.width(12.dp)
+                                )
+                                SecondaryButton(
+                                    enabled = false,
+                                    onClick = {}
+                                ) {
+                                    Text(
+                                        text = "Hello Kore"
+                                    )
+                                }
+                                Spacer(
+                                    modifier = Modifier.width(12.dp)
+                                )
+                                OutlinedButton(
+                                    enabled = false,
+                                    onClick = {}
+                                ) {
+                                    Text(
+                                        text = "Hello Kore"
+                                    )
+                                }
+
+                                GhostButton(
+                                    enabled = false,
+                                    modifier = Modifier.padding(
+                                        top = 8.dp
+                                    ),
+                                    onClick = {}
+                                ) {
+                                    Text(
+                                        text = "Hello Kore"
+                                    )
+                                }
+                            }
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            Text(
+                                color = KoreTheme.colorScheme.primary,
+                                text = "Icon Buttons",
+                                textStyle = KoreTheme.typography.headingMedium
+                                    .copy(
+                                        color = KoreTheme.colorScheme.primary
+                                    )
+                            )
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            Text(
+                                //color = KoreTheme.colorScheme.primary,
+                                text = "Enabled",
+                                textStyle = KoreTheme.typography.titleMedium
+                                    .copy(
+                                        color = KoreTheme.colorScheme.primary
+                                    )
+                            )
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            FlowRow(
+                                horizontalArrangement = Arrangement.SpaceAround,
+                                modifier = Modifier.fillMaxWidth()
                             ) {
                                 PrimaryIconButton(
                                     onClick = {},
@@ -85,7 +245,14 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
 
-
+                                OutlinedIconButton (
+                                    onClick = {}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.CatchingPokemon,
+                                        contentDescription = ""
+                                    )
+                                }
                                 GhostIconButton(
                                     onClick = {}
                                 ) {
@@ -96,7 +263,48 @@ class MainActivity : ComponentActivity() {
                                 }
 
 
+
+                            }
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            Text(
+                                //color = KoreTheme.colorScheme.primary,
+                                text = "Disabled",
+                                textStyle = KoreTheme.typography.titleMedium
+                                    .copy(
+                                        color = KoreTheme.colorScheme.primary
+                                    )
+                            )
+                            Spacer(
+                                modifier = Modifier.height(12.dp)
+                            )
+                            FlowRow(
+                                horizontalArrangement = Arrangement.SpaceAround,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                PrimaryIconButton(
+                                    enabled = false,
+                                    onClick = {},
+                                    content = {
+                                        Icon(
+                                            imageVector = Icons.Rounded.CatchingPokemon,
+                                            contentDescription = ""
+                                        )
+                                    }
+                                )
+
+                                SecondaryIconButton(
+                                    enabled = false,
+                                    onClick = {}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.CatchingPokemon,
+                                        contentDescription = ""
+                                    )
+                                }
                                 OutlinedIconButton (
+                                    enabled = false,
                                     onClick = {}
                                 ) {
                                     Icon(
@@ -105,9 +313,19 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
 
+                                GhostIconButton(
+                                    enabled = false,
+                                    onClick = {}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.CatchingPokemon,
+                                        contentDescription = ""
+                                    )
+                                }
+
+
+
                             }
-
-
 
                         }
                     }

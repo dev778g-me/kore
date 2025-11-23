@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import com.dev.korelibrary.src.Components.Themes.localContentColor
+import com.dev.korelibrary.src.Components.Themes.LocalContentColor
 
 enum class IconButtonSizes{
     Small,
@@ -24,7 +24,7 @@ enum class IconButtonSizes{
 fun Icon(
     imageVector: ImageVector,
     contentDescription: String,
-    tint: Color  = localContentColor.current,
+    tint: Color  = LocalContentColor.current,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
 ) {
     Image(

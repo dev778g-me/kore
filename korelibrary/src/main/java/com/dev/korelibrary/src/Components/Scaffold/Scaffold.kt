@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.dev.korelibrary.src.Components.Themes.localContentColor
+import com.dev.korelibrary.src.Components.Themes.LocalContentColor
 import com.dev.korelibrary.src.Components.Themes.LocalKoreColorScheme
 import com.dev.korelibrary.src.Components.Themes.LocalKoreTypography
-import com.dev.korelibrary.src.Components.Themes.localTextStyle
+import com.dev.korelibrary.src.Components.Themes.LocalTextStyle
 
 @Composable
 fun Scaffold(
@@ -26,8 +26,8 @@ fun Scaffold(
             )
     ){
         CompositionLocalProvider(
-            localContentColor provides contentColor,
-            localTextStyle provides LocalKoreTypography.current.titleMedium
+            LocalContentColor provides contentColor,
+            LocalTextStyle provides LocalKoreTypography.current.titleMedium
         ){
             content()
         }
