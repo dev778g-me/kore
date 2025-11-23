@@ -4,6 +4,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -36,15 +37,14 @@ fun Text(
     textOverflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-
-
     ){
+    val textColor = color.takeOrElse { textStyle.color.takeOrElse { LocalContentColor.current } }
 
     BasicText(
         modifier = modifier,
         text = text,
         style = textStyle.merge(
-            color = color,
+            color = textColor,
             fontSize = fontSize,
             fontStyle = fontStyle,
             fontWeight = fontWeight,

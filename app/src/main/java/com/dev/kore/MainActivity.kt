@@ -72,9 +72,6 @@ class MainActivity : ComponentActivity() {
                                 color = KoreTheme.colorScheme.primary,
                                 text = "Buttons",
                                 textStyle = KoreTheme.typography.headingMedium
-                                    .copy(
-                                        color = KoreTheme.colorScheme.primary
-                                    )
                             )
                             Spacer(
                                 modifier = Modifier.height(12.dp)
