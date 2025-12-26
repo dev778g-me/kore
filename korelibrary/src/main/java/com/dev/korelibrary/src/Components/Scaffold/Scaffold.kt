@@ -27,7 +27,7 @@ fun Scaffold(
     ){
         CompositionLocalProvider(
             LocalContentColor provides contentColor,
-            LocalTextStyle provides LocalKoreTypography.current.titleMedium
+            LocalTextStyle provides LocalKoreTypography.current.labelLarge
         ){
             content()
         }

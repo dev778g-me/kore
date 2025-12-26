@@ -138,7 +138,7 @@ val LocalKoreSizes = staticCompositionLocalOf {
     )
 }
 
-val LocalTextStyle = staticCompositionLocalOf { TextStyle.Default }
+val LocalTextStyle = staticCompositionLocalOf { defaultTypography.headingLarge }
 
 
 val LocalContentColor = staticCompositionLocalOf { Color.Black }
@@ -146,7 +146,6 @@ val LocalContentColor = staticCompositionLocalOf { Color.Black }
 @Composable
 fun KoreTheme(
     isDark : Boolean = isSystemInDarkTheme(),
-
     content : @Composable () -> Unit
 ){
     val colorScheme = if (isDark) defaultDarkColorScheme else defaultLightColorScheme
@@ -160,6 +159,7 @@ fun KoreTheme(
     CompositionLocalProvider(
         LocalKoreColorScheme provides colorScheme,
         LocalKoreTypography provides defaultTypography,
+        LocalTextStyle provides TextStyle.Default,
         LocalIndication provides rippleIndication,
         LocalKoreShapes provides defaultShapes,
         LocalKoreSizes provides defaultSizes,

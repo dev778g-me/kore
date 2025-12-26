@@ -37,7 +37,8 @@ internal fun BaseIconButton(
 
 ) {
     CompositionLocalProvider(
-        LocalContentColor provides if (enabled) iconButtonColors.iconButtonContentColor else iconButtonColors.disabledIconContentColor
+       value =  LocalContentColor provides if (enabled) iconButtonColors.iconButtonContentColor else null  // Only override if enabled
+            ?: LocalContentColor.current
     ) {
         Box(
             modifier = modifier
@@ -196,7 +197,7 @@ object IconButtonDefaults{
     @Composable
     fun ghostIconButton(
         iconButtonContainerColor: Color = KoreTheme.colorScheme.transParentColor,
-        iconButtonContentColor: Color = KoreTheme.colorScheme.primary,
+        iconButtonContentColor: Color = KoreTheme.colorScheme.onBackGround,
         disabledIconButtonColor: Color = KoreTheme.colorScheme.transParentColor,
         disabledIconContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
     ) = IconButtonColors(

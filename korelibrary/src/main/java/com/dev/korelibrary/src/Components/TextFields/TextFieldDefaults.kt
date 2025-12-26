@@ -1,0 +1,145 @@
+package com.dev.korelibrary.src.Components.TextFields
+
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults
+import com.dev.korelibrary.src.Components.Themes.KoreTheme
+
+object TextFieldDefaults {
+    @Composable
+    fun outlinedTextFieldColors(
+        focusedBorderColor: Color = KoreTheme.colorScheme.primary,
+        unFocusedBorderColor: Color = KoreTheme.colorScheme.backGroundVariant,
+        errorBorderColor: Color = KoreTheme.colorScheme.error,
+        disabledBorderColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
+        focusedContainerColor: Color = KoreTheme.colorScheme.transParentColor,
+        unFocusedContainerColor: Color = KoreTheme.colorScheme.transParentColor,
+        errorContainerColor: Color = KoreTheme.colorScheme.transParentColor,
+        disabledContainerColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
+        labelColor : Color = KoreTheme.colorScheme.onBackGround.copy(alpha = 0.7f),
+        errorLabelColor : Color = KoreTheme.colorScheme.error,
+        disabledLabelColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
+        unFocusedIndicatorColor : Color = KoreTheme.colorScheme.backGroundVariant,
+        focusedIndicatorColor: Color = KoreTheme.colorScheme.primary,
+        errorIndicatorColor: Color = KoreTheme.colorScheme.error,
+        disabledIndicatorColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
+        focusedTextColor: Color = KoreTheme.colorScheme.onBackGround,
+        unFocusedTextColor: Color = KoreTheme.colorScheme.onBackGround,
+        errorTextColors: Color = KoreTheme.colorScheme.onBackGround,
+        disabledTextColor: Color = KoreTheme.colorScheme.backGroundVariantDim
+    ) = TextFieldColors(
+        focusedBorderColor = focusedBorderColor,
+        unFocusedBorderColor = unFocusedBorderColor,
+        errorBorderColor = errorBorderColor,
+        disabledBorderColor = disabledBorderColor,
+        focusedContainerColor = focusedContainerColor,
+        unFocusedContainerColor = unFocusedContainerColor,
+        errorContainerColor = errorContainerColor,
+        disabledContainerColor = disabledContainerColor,
+        labelColor = labelColor,
+        errorLabelColor = errorLabelColor,
+        disabledLabelColor = disabledLabelColor,
+        focusedIndicatorColor = focusedIndicatorColor,
+        unFocusedIndicatorColor = unFocusedIndicatorColor,
+        errorIndicatorColor = errorIndicatorColor,
+        disabledIndicatorColor = disabledIndicatorColor,
+        focusedTextColor  = focusedTextColor,
+        unFocusedTextColor = unFocusedTextColor,
+        errorTextColor = errorTextColors,
+        disabledTextColor = disabledTextColor
+    )
+
+    val defaultTextFieldShape = KoreDefaults.defaultShapes.normal
+
+    val minimumTextFieldHeight = 56.dp
+
+    val minimumTextFieldWidth = 200.dp
+
+    val maxLeadingIconHeight = 42.dp
+
+    val maxTrailingIconHeight = 42.dp
+
+    val textFieldPadding : PaddingValues = PaddingValues(
+        horizontal = 12.dp,
+        vertical = 8.dp
+    )
+
+    val leadingIconPaddingValues : PaddingValues = PaddingValues(
+        end = 12.dp
+    )
+
+    val trailingIconPaddingValues : PaddingValues = PaddingValues(
+        start = 12.dp
+    )
+
+
+}
+
+@Immutable
+data class TextFieldColors(
+    val focusedBorderColor : Color,
+    val unFocusedBorderColor : Color,
+    val errorBorderColor : Color,
+    val disabledBorderColor : Color,
+    val focusedContainerColor : Color,
+    val unFocusedContainerColor : Color,
+    val errorContainerColor : Color,
+    val disabledContainerColor : Color,
+    val labelColor : Color,
+    val errorLabelColor : Color,
+    val disabledLabelColor : Color,
+    val unFocusedIndicatorColor : Color,
+    val focusedIndicatorColor: Color,
+    val errorIndicatorColor : Color,
+    val disabledIndicatorColor : Color,
+    val focusedTextColor : Color,
+    val unFocusedTextColor : Color,
+    val errorTextColor: Color,
+    val disabledTextColor: Color,
+)
+
+internal fun TextFieldColors.borderColor(
+    enabled: Boolean,
+    hasError: Boolean,
+    isFocused: Boolean
+): Color {
+    val isError: Boolean = enabled && hasError
+    return when {
+        !enabled -> this.disabledBorderColor
+        isError -> this.errorBorderColor
+        isFocused -> this.focusedBorderColor
+        else -> this.unFocusedBorderColor
+    }
+}
+
+
+internal fun TextFieldColors.indicatorColor(
+    enabled: Boolean,
+    hasError: Boolean,
+    isFocused: Boolean
+): Color {
+    val isError: Boolean = enabled && hasError
+    return when {
+        !enabled -> this.disabledIndicatorColor
+        isError -> this.errorIndicatorColor
+        isFocused -> this.focusedIndicatorColor
+        else -> this.unFocusedIndicatorColor
+    }
+}
+
+internal fun TextFieldColors.contentColor(
+    enabled: Boolean,
+    error: Boolean,
+    isFocused: Boolean
+) : Color{
+    val hasError : Boolean = enabled && error
+    return when {
+        !enabled -> this.disabledTextColor
+        error -> this.errorTextColor
+        isFocused -> this.focusedTextColor
+        else -> this.unFocusedTextColor
+    }
+}

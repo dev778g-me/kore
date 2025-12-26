@@ -1,7 +1,6 @@
 package com.dev.korelibrary.src.Components.Themes
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -12,10 +11,10 @@ object KoreDefaults{
     val defaultLightColorScheme = KoreColors(
         background = TailwindColors.Neutral100,
         onBackGround = TailwindColors.Gray900,
-        backGroundVariant = TailwindColors.Neutral200,
+        backGroundVariant = TailwindColors.Neutral400,
         onBackGroundVariant = TailwindColors.Neutral800,
-        backGroundVariantDim = TailwindColors.Neutral200,
-        onBackGroundVariantDim = TailwindColors.Neutral300,
+        backGroundVariantDim = TailwindColors.Neutral300,
+        onBackGroundVariantDim = TailwindColors.Neutral400,
 
         primary = TailwindColors.Blue500,
         onPrimary = TailwindColors.White,
@@ -44,7 +43,7 @@ object KoreDefaults{
         backGroundVariant = TailwindColors.Neutral800,
         onBackGroundVariant = TailwindColors.Neutral200,
         backGroundVariantDim = TailwindColors.Neutral900,
-        onBackGroundVariantDim = TailwindColors.Neutral800,
+        onBackGroundVariantDim = TailwindColors.Neutral300,
 
         primary = TailwindColors.Blue700,
         onPrimary = TailwindColors.Blue200,
@@ -69,57 +68,57 @@ object KoreDefaults{
 
     val defaultTypography = KoreTypography(
         headingLarge = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
             lineHeight = 40.sp
         ),
         headingMedium = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.SemiBold,
             fontSize = 28.sp,
             lineHeight = 36.sp
         ),
         headingSmall = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.SemiBold,
             fontSize = 24.sp,
             lineHeight = 32.sp
         ),
 
         titleLarge = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.SemiBold,
             fontSize = 20.sp,
             lineHeight = 28.sp
         ),
         titleMedium = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.Medium,
             fontSize = 18.sp,
             lineHeight = 24.sp
         ),
         titleSmall = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
             lineHeight = 22.sp
         ),
 
         labelLarge = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
             lineHeight = 20.sp
         ),
         labelMedium = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.Normal,
             fontSize = 12.sp,
             lineHeight = 16.sp
         ),
         labelSmall = TextStyle(
-            fontFamily =googleSansRounded,
+            fontFamily =googleSansFlex,
             fontWeight = FontWeight.Normal,
             fontSize = 11.sp,
             lineHeight = 14.sp

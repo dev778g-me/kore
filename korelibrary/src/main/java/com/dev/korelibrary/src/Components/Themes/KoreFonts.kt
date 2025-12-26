@@ -6,15 +6,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.dev.korelibrary.R
 
-val googleSansRounded = FontFamily(
-    Font(R.font.google_sans_rounded_regular, FontWeight.ExtraLight),
-    Font(R.font.google_sans_rounded_regular, FontWeight.Light),
-    Font(R.font.google_sans_rounded_regular, FontWeight.Normal),
-    Font(R.font.google_sans_rounded_regular, FontWeight.Medium),
-    Font(R.font.google_sans_rounded_regular, FontWeight.SemiBold),
-    Font(R.font.google_sans_rounded_regular, FontWeight.Bold),
-    Font(R.font.google_sans_rounded_regular, FontWeight.ExtraBold),
-    Font(R.font.google_sans_rounded_regular, FontWeight.Black),
+val googleSansFlex = FontFamily(
+    Font(R.font.google_sans_flex, FontWeight.ExtraLight),
+    Font(R.font.google_sans_flex, FontWeight.Light),
+    Font(R.font.google_sans_flex, FontWeight.Normal),
+    Font(R.font.google_sans_flex, FontWeight.Medium),
+    Font(R.font.google_sans_flex, FontWeight.SemiBold),
+    Font(R.font.google_sans_flex, FontWeight.Bold),
+    Font(R.font.google_sans_flex, FontWeight.ExtraBold),
+    Font(R.font.google_sans_flex, FontWeight.Black),
 
     )
 
