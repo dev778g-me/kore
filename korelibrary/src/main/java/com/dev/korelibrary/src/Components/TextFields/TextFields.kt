@@ -184,9 +184,9 @@ fun DecorationBox(
                 contentAlignment = Alignment.Center
             ) {
                CompositionLocalProvider(
-                   value = LocalContentColor provides textFieldColors.indicatorColor(
+                   value = LocalContentColor provides textFieldColors.leadingIconColor(
                        enabled = enabled,
-                       hasError = isError,
+                       error = isError,
                        isFocused = isFocused
                    )
                ) {
@@ -225,7 +225,15 @@ fun DecorationBox(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                trailingIcon()
+                CompositionLocalProvider(
+                    value = LocalContentColor provides textFieldColors.trailingIconColor(
+                        enabled = enabled,
+                        error = isError,
+                        isFocused = isFocused
+                    )
+                ) {
+                    trailingIcon()
+                }
             }
         }
     }}

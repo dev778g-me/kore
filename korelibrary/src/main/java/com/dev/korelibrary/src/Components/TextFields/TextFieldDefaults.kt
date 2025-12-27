@@ -29,7 +29,15 @@ object TextFieldDefaults {
         focusedTextColor: Color = KoreTheme.colorScheme.onBackGround,
         unFocusedTextColor: Color = KoreTheme.colorScheme.onBackGround,
         errorTextColors: Color = KoreTheme.colorScheme.onBackGround,
-        disabledTextColor: Color = KoreTheme.colorScheme.backGroundVariantDim
+        disabledTextColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
+        unFocusedLeadingIconColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim,
+        focusedLeadingIconColor: Color = KoreTheme.colorScheme.onBackGround,
+        errorLeadingIconColor: Color = KoreTheme.colorScheme.error,
+        disabledLeadingIconColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim,
+        unFocusedTrailingIconColor: Color  = KoreTheme.colorScheme.onBackGroundVariantDim,
+        focusedTrailingIconColor : Color = KoreTheme.colorScheme.onBackGround,
+        errorTrailingIconColor : Color = KoreTheme.colorScheme.error,
+        disabledTrailingIconColor : Color = KoreTheme.colorScheme.onBackGroundVariantDim,
     ) = TextFieldColors(
         focusedBorderColor = focusedBorderColor,
         unFocusedBorderColor = unFocusedBorderColor,
@@ -46,10 +54,18 @@ object TextFieldDefaults {
         unFocusedIndicatorColor = unFocusedIndicatorColor,
         errorIndicatorColor = errorIndicatorColor,
         disabledIndicatorColor = disabledIndicatorColor,
-        focusedTextColor  = focusedTextColor,
+        focusedTextColor = focusedTextColor,
         unFocusedTextColor = unFocusedTextColor,
         errorTextColor = errorTextColors,
-        disabledTextColor = disabledTextColor
+        disabledTextColor = disabledTextColor,
+        unFocusedLeadingIconColor = unFocusedLeadingIconColor,
+        focusedLeadingIconColor = focusedLeadingIconColor,
+        errorLeadingIconColor = errorLeadingIconColor,
+        disabledLeadingIconColor = disabledLeadingIconColor,
+        unFocusedTrailingIconColor = unFocusedTrailingIconColor,
+        focusedTrailingIconColor = focusedTrailingIconColor,
+        errorTrailingIconColor = errorTrailingIconColor,
+        disabledTrailingIconColor = disabledTrailingIconColor,
     )
 
     val defaultTextFieldShape = KoreDefaults.defaultShapes.normal
@@ -99,6 +115,14 @@ data class TextFieldColors(
     val unFocusedTextColor : Color,
     val errorTextColor: Color,
     val disabledTextColor: Color,
+    val unFocusedLeadingIconColor: Color,
+    val focusedLeadingIconColor : Color,
+    val errorLeadingIconColor : Color,
+    val disabledLeadingIconColor : Color,
+    val unFocusedTrailingIconColor: Color,
+    val focusedTrailingIconColor : Color,
+    val errorTrailingIconColor : Color,
+    val disabledTrailingIconColor : Color,
 )
 
 internal fun TextFieldColors.borderColor(
@@ -130,6 +154,36 @@ internal fun TextFieldColors.indicatorColor(
     }
 }
 
+// function for colors of the leading icon
+
+
+internal fun TextFieldColors.leadingIconColor(
+    enabled: Boolean,
+    error : Boolean,
+    isFocused: Boolean
+) : Color {
+    val isError : Boolean = enabled && error
+    return when {
+        !enabled -> this.disabledLeadingIconColor
+        error -> this.errorLeadingIconColor
+        isFocused -> this.focusedLeadingIconColor
+        else -> this.unFocusedLeadingIconColor
+    }
+}
+
+internal fun TextFieldColors.trailingIconColor(
+    enabled: Boolean,
+    error : Boolean,
+    isFocused: Boolean
+) : Color {
+    val isError : Boolean = enabled && error
+    return when {
+        !enabled -> this.disabledTrailingIconColor
+        error -> this.errorTrailingIconColor
+        isFocused -> this.focusedTrailingIconColor
+        else -> this.unFocusedTrailingIconColor
+    }
+}
 internal fun TextFieldColors.contentColor(
     enabled: Boolean,
     error: Boolean,

@@ -20,6 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -27,6 +28,7 @@ import com.dev.korelibrary.src.Components.Buttons.GhostIconButton
 import com.dev.korelibrary.src.Components.Buttons.Icon
 import com.dev.korelibrary.src.Components.Scaffold.Scaffold
 import com.dev.korelibrary.src.Components.TextFields.OutlinedTextField
+import com.dev.korelibrary.src.Components.TextFields.TextFieldDefaults
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
 
 class MainActivity : ComponentActivity() {
