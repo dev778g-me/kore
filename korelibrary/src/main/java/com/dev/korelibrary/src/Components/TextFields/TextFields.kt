@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -76,7 +78,7 @@ internal fun BaseTextField(
                 modifier = modifier
                     .defaultMinSize(
                         minHeight = TextFieldDefaults.minimumTextFieldHeight,
-                        minWidth = TextFieldDefaults.minimumTextFieldWidth
+                        minWidth =300.dp
                     )
                     .clip(
                         shape = shape
@@ -114,6 +116,7 @@ internal fun BaseTextField(
                     decorationBox = { innerField ->
                         DecorationBox(
                             value = value,
+                            //modifier = modifier,
                             innerTextField = innerField,
                             enabled = enabled,
                             singleLine = singleLine,
@@ -141,6 +144,7 @@ internal fun BaseTextField(
 @Composable
 fun DecorationBox(
     value: String,
+    modifier: Modifier = Modifier,
     innerTextField : @Composable () -> Unit,
     enabled: Boolean,
     label : String?,
@@ -152,9 +156,9 @@ fun DecorationBox(
     visualTransformation: VisualTransformation,
     interactionSource: MutableInteractionSource,
     leadingIcon : @Composable (()-> Unit) ?,
-    trailingIcon : @Composable (()-> Unit) ?,
+    trailingIcon: @Composable (() -> Unit)?,
 
-) {
+    ) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -162,7 +166,10 @@ fun DecorationBox(
             .padding(
                 TextFieldDefaults.textFieldPadding
             )
+
             .height(IntrinsicSize.Min)
+            .width(IntrinsicSize.Max)
+            .wrapContentWidth()
     ) {
         if (leadingIcon != null) {
             Box(
@@ -190,16 +197,17 @@ fun DecorationBox(
 
 
 
-        Box(modifier = Modifier.weight(1f)) {
+        Box(
+            modifier = Modifier.weight(
+                1f
+            )
+        ) {
 
-            AnimatedContent(
-                targetState = !shouldFloat && label != null,
-            ) {
-                if (it) {
-                    Text(
-                        text = label!!,
-                    )
-                }
+            if (!shouldFloat && label != null) {
+                Text(
+                    text = label,
+                )
+
             }
             innerTextField()
         }
@@ -214,7 +222,8 @@ fun DecorationBox(
                     )
                     .padding(
                         TextFieldDefaults.trailingIconPaddingValues
-                    )
+                    ),
+                contentAlignment = Alignment.Center
             ) {
                 trailingIcon()
             }

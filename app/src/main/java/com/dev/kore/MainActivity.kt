@@ -13,12 +13,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Php
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.dev.korelibrary.src.Components.Buttons.GhostIconButton
 import com.dev.korelibrary.src.Components.Buttons.Icon
@@ -57,6 +60,7 @@ class MainActivity : ComponentActivity() {
 
 
                             OutlinedTextField(
+                                visualTransformation = PasswordVisualTransformation(),
 //                                enabled = false,
 //                                isError = true,
                                 leadingIcon = {
@@ -74,7 +78,12 @@ class MainActivity : ComponentActivity() {
 //                                        )
 //                                    }
                                 },
-
+                                trailingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Php,
+                                        contentDescription = ""
+                                    )
+                                },
                                 value = textField1,
                                 onValueChange = {
                                     textField1 = it
