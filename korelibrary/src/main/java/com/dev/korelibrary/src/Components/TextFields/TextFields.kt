@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -54,6 +55,7 @@ internal fun BaseTextField(
     shape : androidx.compose.ui.graphics.Shape = TextFieldDefaults.defaultTextFieldShape,
     textStyle: TextStyle ?,
     textFieldColors: TextFieldColors,
+   // onTextLayoutResult: (TextLayoutResult) -> Unit,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default
@@ -103,6 +105,7 @@ internal fun BaseTextField(
                 keyboardOptions = keyboardOptions,
                 visualTransformation = visualTransformation,
                 interactionSource = textFieldInteractionSource,
+                //onTextLayout =onTextLayoutResult ,
                 textStyle = textStyle ?: LocalTextStyle.current.copy(
                     color = LocalContentColor.current
                 ),
@@ -115,22 +118,17 @@ internal fun BaseTextField(
                     ),
                     decorationBox = { innerField ->
                         DecorationBox(
-                            value = value,
-                            //modifier = modifier,
                             innerTextField = innerField,
                             enabled = enabled,
                             singleLine = singleLine,
                             textFieldColors = textFieldColors,
-                            visualTransformation = visualTransformation,
-                            interactionSource = textFieldInteractionSource,
                             leadingIcon = leadingIcon,
                             trailingIcon = trailingIcon,
                             label = label,
                             isError = isError,
                             isFocused = isFocused,
                             shouldFloat = shouldFloat,
-
-                        )
+                            )
                     }, value = value, onValueChange = {
                         onValueChange.invoke(it)
                     })
@@ -143,8 +141,6 @@ internal fun BaseTextField(
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun DecorationBox(
-    value: String,
-    modifier: Modifier = Modifier,
     innerTextField : @Composable () -> Unit,
     enabled: Boolean,
     label : String?,
@@ -153,11 +149,8 @@ fun DecorationBox(
     singleLine : Boolean,
     shouldFloat: Boolean,
     textFieldColors: TextFieldColors,
-    visualTransformation: VisualTransformation,
-    interactionSource: MutableInteractionSource,
     leadingIcon : @Composable (()-> Unit) ?,
     trailingIcon: @Composable (() -> Unit)?,
-
     ) {
 
     Row(
@@ -256,6 +249,7 @@ fun OutlinedTextField(
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     textFieldColors: TextFieldColors = TextFieldDefaults.outlinedTextFieldColors(),
+    //onTextLayoutResult: (TextLayoutResult) -> Unit ,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default
@@ -273,6 +267,7 @@ fun OutlinedTextField(
         leadingIcon = leadingIcon,
         trailingIcon = trailingIcon,
         textFieldColors = textFieldColors,
+       // onTextLayoutResult = onTextLayoutResult,
         visualTransformation = visualTransformation,
         keyboardActions = keyboardActions,
         keyboardOptions = keyboardOptions,

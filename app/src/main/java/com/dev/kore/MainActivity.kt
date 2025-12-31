@@ -4,14 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Php
 import androidx.compose.material.icons.rounded.Email
@@ -26,7 +32,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.dev.korelibrary.src.Components.Buttons.GhostIconButton
 import com.dev.korelibrary.src.Components.Buttons.Icon
+import com.dev.korelibrary.src.Components.Buttons.PrimaryButton
 import com.dev.korelibrary.src.Components.Scaffold.Scaffold
+import com.dev.korelibrary.src.Components.Text
 import com.dev.korelibrary.src.Components.TextFields.OutlinedTextField
 import com.dev.korelibrary.src.Components.TextFields.TextFieldDefaults
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
@@ -48,14 +56,30 @@ class MainActivity : ComponentActivity() {
             var isFocus by remember { mutableStateOf(false) }
             KoreTheme{
                 Scaffold(
+                    appBar = {
+                        Box(
+                            modifier = Modifier.fillMaxWidth().height(70.dp).background(
+                                color = Color.Red
+                            )
+                        )
+                    },
+                    navigationBar = {
+                      PrimaryButton(
+                          modifier = Modifier.windowInsetsPadding(
+                              insets = WindowInsets.navigationBars
+                          ),
+                          onClick = {}
+                      ) { }
+                    },
                     content = {
+
                         Column(
                             //horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
+                           // verticalArrangement = Arrangement.Center,
                             modifier = Modifier
                                 .fillMaxSize()
                                 .padding(
-                                    horizontal = 16.dp,
+                                    it
 
                                     )
                         ) {
@@ -98,13 +122,7 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier.height(23.dp)
                             )
 
-//                            PrimaryButton(
-//                                onClick = {}
-//                            ) {
-//                                Text(
-//                                    text = "Primary"
-//                                )
-//                            }
+
 //                            Spacer(
 //                                modifier = Modifier.height(23.dp)
 //                            )
