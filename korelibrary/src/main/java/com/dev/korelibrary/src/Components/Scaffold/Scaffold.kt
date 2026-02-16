@@ -50,7 +50,7 @@ fun Scaffold(
         modifier = modifier.onConsumedWindowInsetsChanged{
             safeInsets.insets =  windowInsets.exclude(it)
         }.background(
-            color = KoreTheme.colorScheme.background
+            color = containerColor
         )
     ) {
         SubcomposeLayout(

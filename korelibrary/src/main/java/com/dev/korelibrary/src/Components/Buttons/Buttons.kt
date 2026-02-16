@@ -25,6 +25,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
 import com.dev.korelibrary.src.Components.Themes.LocalContentColor
+import com.dev.korelibrary.src.Components.Themes.LocalKoreShapes
+import com.dev.korelibrary.src.Components.Themes.LocalKoreSizes
 import com.dev.korelibrary.src.Components.Themes.LocalTextStyle
 
 
@@ -235,8 +237,8 @@ object ButtonDefaults{
     fun primaryButtonColors(
         containerColor : Color = KoreTheme.colorScheme.primary,
         contentColor: Color = KoreTheme.colorScheme.onPrimary,
-        disabledButtonContainerColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
-        disabledButtonContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledButtonContainerColor: Color = KoreTheme.colorScheme.disabled,
+        disabledButtonContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = ButtonColors(
         buttonContainerColor = containerColor,
         buttonContentColor = contentColor,
@@ -248,8 +250,8 @@ object ButtonDefaults{
     fun secondaryButtonColors (
         containerColor: Color = KoreTheme.colorScheme.backGroundVariant,
         contentColor : Color = KoreTheme.colorScheme.onBackGroundVariant,
-        disabledButtonContainerColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
-        disabledButtonContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledButtonContainerColor: Color = KoreTheme.colorScheme.disabled,
+        disabledButtonContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = ButtonColors(
         buttonContainerColor = containerColor,
         buttonContentColor = contentColor,
@@ -259,10 +261,10 @@ object ButtonDefaults{
 
     @Composable
     fun outlinedButtonColors(
-        containerColor: Color = KoreTheme.colorScheme.primary.copy(alpha = 0.1f),
+        containerColor: Color = KoreTheme.colorScheme.transParentColor,
         contentColor: Color = KoreTheme.colorScheme.primary,
         disabledButtonContainerColor: Color = KoreTheme.colorScheme.transParentColor,
-        disabledButtonContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledButtonContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = ButtonColors(
         buttonContainerColor = containerColor,
         buttonContentColor = contentColor,
@@ -276,7 +278,7 @@ object ButtonDefaults{
         containerColor: Color = Color.Transparent,
         contentColor: Color = KoreTheme.colorScheme.primary,
         disabledButtonContainerColor: Color = KoreTheme.colorScheme.transParentColor,
-        disabledButtonContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledButtonContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = ButtonColors(
         buttonContainerColor = containerColor,
         buttonContentColor = contentColor,
@@ -298,8 +300,8 @@ object ButtonDefaults{
     @Composable
     fun smallButtonPadding(
         buttonPadding : PaddingValues = PaddingValues(
-            horizontal = KoreTheme.sizes.medium,
-            vertical = KoreTheme.sizes.small
+            horizontal = LocalKoreSizes.current.medium,
+            vertical = LocalKoreSizes.current.small
         )
     ) = buttonPadding
 

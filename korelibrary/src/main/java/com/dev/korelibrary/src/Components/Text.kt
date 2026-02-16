@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -20,46 +21,45 @@ import com.dev.korelibrary.src.Components.Themes.LocalTextStyle
 
 @Composable
 fun Text(
-    text : String,
+    text: String,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = LocalTextStyle.current,
-    color : Color = LocalContentColor.current,
-    fontSize : TextUnit  = TextUnit.Unspecified,
-    lineHeight : TextUnit = TextUnit.Unspecified,
-    letterSpacing : TextUnit  = TextUnit.Unspecified,
-    fontWeight: FontWeight ? = null,
-    fontFamily: FontFamily ? =null,
-    fontStyle : FontStyle? = null,
-    textDecoration: TextDecoration ? = TextDecoration.None,
-    textAlign: TextAlign ? = null,
-    textDirection: TextDirection ? = TextDirection.Unspecified,
-    softWrap  : Boolean = true,
-    textOverflow: TextOverflow = TextOverflow.Ellipsis,
+    color: Color = Color.Unspecified,
+    fontSize: TextUnit = TextUnit.Unspecified,
+    fontStyle: FontStyle? = null,
+    fontWeight: FontWeight? = null,
+    fontFamily: FontFamily? = null,
+    letterSpacing: TextUnit = TextUnit.Unspecified,
+    textDecoration: TextDecoration? = null,
+    textAlign: TextAlign? = null,
+    lineHeight: TextUnit = TextUnit.Unspecified,
+    overflow: TextOverflow = TextOverflow.Clip,
+    softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    ){
+    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
+    textStyle : TextStyle = LocalTextStyle.current
+) {
+
     val textColor = color.takeOrElse { textStyle.color.takeOrElse { LocalContentColor.current } }
 
     BasicText(
-        modifier = modifier,
-        text = text,
-        style = textStyle.merge(
+        text,
+        modifier,
+        textStyle.merge(
             color = textColor,
             fontSize = fontSize,
-            fontStyle = fontStyle,
             fontWeight = fontWeight,
-            fontFamily = fontFamily,
             textAlign = textAlign ?: TextAlign.Unspecified,
-            textDirection = textDirection ?: TextDirection.Unspecified,
-            letterSpacing = letterSpacing,
             lineHeight = lineHeight,
+            fontFamily = fontFamily,
             textDecoration = textDecoration,
+            fontStyle = fontStyle,
+            letterSpacing = letterSpacing
         ),
-        maxLines = maxLines,
-        minLines = minLines,
-        overflow = textOverflow,
-        softWrap = softWrap
+        onTextLayout,
+        overflow,
+        softWrap,
+        maxLines,
+        minLines
     )
-
-
 }

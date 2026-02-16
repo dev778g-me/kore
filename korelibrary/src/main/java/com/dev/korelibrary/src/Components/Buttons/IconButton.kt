@@ -156,8 +156,8 @@ object IconButtonDefaults{
     fun primaryIconButtonColors(
         iconButtonContainerColor: Color = KoreTheme.colorScheme.primary,
         iconButtonContentColor: Color = KoreTheme.colorScheme.onPrimary,
-        disabledIconButtonColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
-        disabledIconContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledIconButtonColor: Color = KoreTheme.colorScheme.disabled,
+        disabledIconContentColor: Color = KoreTheme.colorScheme.onDisabled
 
     ) = IconButtonColors(
         iconButtonContainerColor = iconButtonContainerColor,
@@ -171,8 +171,8 @@ object IconButtonDefaults{
     fun secondaryIconButtonColors(
         iconButtonContainerColor: Color = KoreTheme.colorScheme.backGroundVariant,
         iconButtonContentColor: Color = KoreTheme.colorScheme.onBackGroundVariant,
-        disabledIconButtonColor: Color = KoreTheme.colorScheme.backGroundVariantDim,
-        disabledIconContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledIconButtonColor: Color = KoreTheme.colorScheme.disabled,
+        disabledIconContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = IconButtonColors(
         iconButtonContainerColor = iconButtonContainerColor,
         iconButtonContentColor = iconButtonContentColor,
@@ -185,7 +185,7 @@ object IconButtonDefaults{
         iconButtonContainerColor: Color = KoreTheme.colorScheme.primary.copy(alpha = 0.1f),
         iconButtonContentColor: Color = KoreTheme.colorScheme.primary,
         disabledIconButtonColor: Color = KoreTheme.colorScheme.transParentColor,
-        disabledIconContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledIconContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = IconButtonColors(
         iconButtonContainerColor = iconButtonContainerColor,
         iconButtonContentColor = iconButtonContentColor,
@@ -199,7 +199,7 @@ object IconButtonDefaults{
         iconButtonContainerColor: Color = KoreTheme.colorScheme.transParentColor,
         iconButtonContentColor: Color = KoreTheme.colorScheme.onBackGround,
         disabledIconButtonColor: Color = KoreTheme.colorScheme.transParentColor,
-        disabledIconContentColor: Color = KoreTheme.colorScheme.onBackGroundVariantDim
+        disabledIconContentColor: Color = KoreTheme.colorScheme.onDisabled
     ) = IconButtonColors(
         iconButtonContainerColor = iconButtonContainerColor,
         iconButtonContentColor = iconButtonContentColor,

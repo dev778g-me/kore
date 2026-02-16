@@ -16,6 +16,7 @@ import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultDarkColorSc
 import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultLightColorScheme
 import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultShapes
 import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultSizes
+import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultSquircleShapes
 import com.dev.korelibrary.src.Components.Themes.KoreDefaults.defaultTypography
 import com.dev.korelibrary.src.Components.Themes.Ripple.koreRipple
 
@@ -25,8 +26,8 @@ data class KoreColors(
     val onBackGround : Color,
     val backGroundVariant : Color,
     val onBackGroundVariant : Color,
-    val backGroundVariantDim: Color,
-    val onBackGroundVariantDim : Color,
+    val disabled: Color,
+    val onDisabled : Color,
     val primary : Color,
     val onPrimary : Color,
     val primaryContainer : Color,
@@ -39,6 +40,8 @@ data class KoreColors(
     val onTertiary : Color,
     val tertiaryContainer : Color,
     val onTertiaryContainer : Color,
+    val success : Color,
+    val onSuccess : Color,
     val error : Color,
     val onError : Color,
     val transParentColor : Color
@@ -49,9 +52,15 @@ data class KoreTypography(
     val headingLarge : TextStyle,
     val headingMedium : TextStyle,
     val headingSmall : TextStyle,
+    val displayLarge : TextStyle,
+    val displayMedium : TextStyle,
+    val displaySmall : TextStyle,
     val titleLarge : TextStyle,
     val titleMedium : TextStyle,
     val titleSmall : TextStyle,
+    val bodyLarge : TextStyle,
+    val bodyMedium : TextStyle,
+    val bodySmall : TextStyle,
     val labelLarge : TextStyle,
     val labelMedium : TextStyle,
     val labelSmall : TextStyle
@@ -77,89 +86,45 @@ data class KoreSizes(
 )
 
 val LocalKoreColorScheme = staticCompositionLocalOf {
-    KoreColors(
-        background = Color.Unspecified,
-        onBackGround = Color.Unspecified,
-        backGroundVariant = Color.Unspecified,
-        onBackGroundVariant = Color.Unspecified,
-        backGroundVariantDim = Color.Unspecified,
-        onBackGroundVariantDim = Color.Unspecified,
-        primary = Color.Unspecified,
-        onPrimary = Color.Unspecified,
-        primaryContainer = Color.Unspecified,
-        onPrimaryContainer = Color.Unspecified,
-        secondary = Color.Unspecified,
-        onSecondary = Color.Unspecified,
-        secondaryContainer = Color.Unspecified,
-        onSecondaryContainer = Color.Unspecified,
-        tertiary = Color.Unspecified,
-        onTertiary = Color.Unspecified,
-        tertiaryContainer = Color.Unspecified,
-        onTertiaryContainer = Color.Unspecified,
-        error = Color.Unspecified,
-        onError = Color.Unspecified,
-        transParentColor = Color.Unspecified
-    )
+    defaultLightColorScheme
 }
 
 
 val LocalKoreTypography = staticCompositionLocalOf {
-    KoreTypography(
-        headingLarge = TextStyle.Default,
-        headingMedium = TextStyle.Default,
-        headingSmall = TextStyle.Default,
-        titleLarge = TextStyle.Default,
-        titleMedium = TextStyle.Default,
-        titleSmall = TextStyle.Default,
-        labelLarge = TextStyle.Default,
-        labelMedium = TextStyle.Default,
-        labelSmall = TextStyle.Default
-    )
+   defaultTypography
 }
 
 val LocalKoreShapes = staticCompositionLocalOf {
-    KoreShapes(
-        extraLarge = RectangleShape,
-        large = RectangleShape,
-        medium = RectangleShape,
-        normal = RectangleShape,
-        small = RectangleShape,
-    )
+    defaultShapes
 }
 
 val LocalKoreSizes = staticCompositionLocalOf {
-    KoreSizes(
-        extraLarge = Dp.Unspecified,
-        large = Dp.Unspecified,
-        medium = Dp.Unspecified,
-        normal = Dp.Unspecified,
-        small = Dp.Unspecified,
-        extraSmall = Dp.Unspecified,
-    )
+    defaultSizes
 }
 
 val LocalTextStyle = staticCompositionLocalOf { defaultTypography.headingLarge }
 
 
-val LocalContentColor = staticCompositionLocalOf { Color.Black }
+val LocalContentColor = staticCompositionLocalOf { defaultLightColorScheme.onBackGround }
 
 @Composable
 fun KoreTheme(
-    isDark : Boolean = isSystemInDarkTheme(),
-    content : @Composable () -> Unit
-){
+    isDark: Boolean = isSystemInDarkTheme(),
+    defaultShapes: KoreShapes = KoreDefaults.defaultShapes,
+    content: @Composable () -> Unit
+) {
     val colorScheme = if (isDark) defaultDarkColorScheme else defaultLightColorScheme
     val rippleIndication = remember(colorScheme) {
         koreRipple(
-            // bounded = true,
             color = colorScheme.onBackGround
         )
     }
 
     CompositionLocalProvider(
         LocalKoreColorScheme provides colorScheme,
+        LocalContentColor provides colorScheme.onBackGround,
         LocalKoreTypography provides defaultTypography,
-        LocalTextStyle provides TextStyle.Default,
+        LocalTextStyle provides defaultTypography.titleSmall,
         LocalIndication provides rippleIndication,
         LocalKoreShapes provides defaultShapes,
         LocalKoreSizes provides defaultSizes,
