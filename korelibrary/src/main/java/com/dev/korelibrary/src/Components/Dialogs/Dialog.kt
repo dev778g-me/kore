@@ -63,12 +63,6 @@ fun AlertDialog(
                     color = dialogColors.containerColor,
                     shape = dialogShape
                 )
-                .border(
-                    width = 1.dp,
-                    color = dialogColors.borderColor,
-                    shape = dialogShape
-                )
-
                 .padding(
                     paddingValues = dialogPadding
                 )

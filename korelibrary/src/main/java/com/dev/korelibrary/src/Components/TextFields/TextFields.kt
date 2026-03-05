@@ -1,8 +1,7 @@
 package com.dev.korelibrary.src.Components.TextFields
 
-import android.graphics.drawable.shapes.Shape
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -26,9 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -55,7 +51,6 @@ internal fun BaseTextField(
     shape : androidx.compose.ui.graphics.Shape = TextFieldDefaults.defaultTextFieldShape,
     textStyle: TextStyle ?,
     textFieldColors: TextFieldColors,
-   // onTextLayoutResult: (TextLayoutResult) -> Unit,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default
@@ -80,7 +75,15 @@ internal fun BaseTextField(
                 modifier = modifier
                     .defaultMinSize(
                         minHeight = TextFieldDefaults.minimumTextFieldHeight,
-                        minWidth =300.dp
+                        minWidth = 300.dp
+                    )
+                    .background(
+                        shape = shape,
+                        color = textFieldColors.containerColor(
+                            enabled = enabled,
+                            isFocused = isFocused,
+                            error = isError,
+                        )
                     )
                     .clip(
                         shape = shape
@@ -112,7 +115,7 @@ internal fun BaseTextField(
                 cursorBrush = SolidColor(
                     value = textFieldColors.indicatorColor(
                         enabled = enabled,
-                        hasError = isError,
+                        error = isError,
                         isFocused = isFocused
                         )
                     ),
@@ -159,7 +162,6 @@ fun DecorationBox(
             .padding(
                 TextFieldDefaults.textFieldPadding
             )
-
             .height(IntrinsicSize.Min)
             .width(IntrinsicSize.Max)
             .wrapContentWidth()
@@ -232,6 +234,10 @@ fun DecorationBox(
     }}
 
 
+@Composable
+fun FilledTextField(modifier: Modifier = Modifier) {
+
+}
 
 
 

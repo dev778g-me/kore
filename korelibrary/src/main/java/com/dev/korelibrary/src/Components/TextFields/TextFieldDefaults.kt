@@ -142,13 +142,12 @@ internal fun TextFieldColors.borderColor(
 
 internal fun TextFieldColors.indicatorColor(
     enabled: Boolean,
-    hasError: Boolean,
+    error: Boolean,
     isFocused: Boolean
 ): Color {
-    val isError: Boolean = enabled && hasError
     return when {
         !enabled -> this.disabledIndicatorColor
-        isError -> this.errorIndicatorColor
+        error -> this.errorIndicatorColor
         isFocused -> this.focusedIndicatorColor
         else -> this.unFocusedIndicatorColor
     }
@@ -162,7 +161,7 @@ internal fun TextFieldColors.leadingIconColor(
     error : Boolean,
     isFocused: Boolean
 ) : Color {
-    val isError : Boolean = enabled && error
+
     return when {
         !enabled -> this.disabledLeadingIconColor
         error -> this.errorLeadingIconColor
@@ -176,7 +175,7 @@ internal fun TextFieldColors.trailingIconColor(
     error : Boolean,
     isFocused: Boolean
 ) : Color {
-    val isError : Boolean = enabled && error
+
     return when {
         !enabled -> this.disabledTrailingIconColor
         error -> this.errorTrailingIconColor
@@ -189,11 +188,23 @@ internal fun TextFieldColors.contentColor(
     error: Boolean,
     isFocused: Boolean
 ) : Color{
-    val hasError : Boolean = enabled && error
+
     return when {
         !enabled -> this.disabledTextColor
         error -> this.errorTextColor
         isFocused -> this.focusedTextColor
         else -> this.unFocusedTextColor
+    }
+}
+internal fun TextFieldColors.containerColor(
+    enabled: Boolean,
+    error: Boolean,
+    isFocused: Boolean
+) : Color{
+    return when {
+        !enabled -> this.disabledContainerColor
+        error -> this.errorContainerColor
+        isFocused -> this.focusedContainerColor
+        else -> this.unFocusedContainerColor
     }
 }

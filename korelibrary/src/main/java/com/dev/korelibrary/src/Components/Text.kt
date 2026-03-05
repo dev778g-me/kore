@@ -45,7 +45,7 @@ fun Text(
     BasicText(
         text,
         modifier,
-        textStyle.merge(
+        style = textStyle.merge(
             color = textColor,
             fontSize = fontSize,
             fontWeight = fontWeight,

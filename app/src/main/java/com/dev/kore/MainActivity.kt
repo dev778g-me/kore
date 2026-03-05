@@ -4,48 +4,33 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccessAlarm
-import androidx.compose.material.icons.rounded.Code
-import androidx.compose.material.icons.rounded.Error
+import androidx.compose.material.icons.rounded.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import com.dev.habity.icons.OutputIconFile
 import com.dev.korelibrary.src.Components.Buttons.Icon
 import com.dev.korelibrary.src.Components.Buttons.OutlinedButton
 import com.dev.korelibrary.src.Components.Buttons.PrimaryButton
-import com.dev.korelibrary.src.Components.Buttons.PrimaryIconButton
-import com.dev.korelibrary.src.Components.Chips.ErrorChip
-import com.dev.korelibrary.src.Components.Chips.OutlinedChip
-import com.dev.korelibrary.src.Components.Chips.PrimaryChip
-import com.dev.korelibrary.src.Components.Chips.SecondaryChip
-import com.dev.korelibrary.src.Components.Chips.SuccessChip
 import com.dev.korelibrary.src.Components.Dialogs.AlertDialog
 import com.dev.korelibrary.src.Components.Scaffold.Scaffold
 import com.dev.korelibrary.src.Components.Text
+import com.dev.korelibrary.src.Components.TextFields.OutlinedTextField
+import com.dev.korelibrary.src.Components.TextFields.TextFieldDefaults
 import com.dev.korelibrary.src.Components.Themes.KoreTheme
-import io.jadu.nivi.presentation.utils.squircleShape.CornerSmoothing
-import io.jadu.nivi.presentation.utils.squircleShape.SquircleShape
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +38,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             var enabled by rememberSaveable() { mutableStateOf(false) }
-
+          var emailText by rememberSaveable() {mutableStateOf("") }
             KoreTheme{
                 Scaffold(
                     content = {
@@ -69,14 +54,6 @@ class MainActivity : ComponentActivity() {
                                 )
                         ) {
 
-                           PrimaryIconButton(
-                               onClick = {}
-                           ) {
-                               Icon(
-                                   imageVector = OutputIconFile,
-                                   contentDescription = ""
-                               )
-                           }
                             if (enabled){
                                 AlertDialog(
                                     onDismissRequest = {
@@ -116,10 +93,27 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
-                            Text(
-                                text = "Basic dialog compose foundation",
-                                color = KoreTheme.colorScheme.primary
+
+
+                            OutlinedTextField(
+                                isError = true,
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Email,
+                                        contentDescription = ""
+                                    )
+                                },
+                                value =emailText,
+                                onValueChange = {
+                                    emailText = it
+                                },
+                                label = "enter mail"
                             )
+
+
+
+
+
                             PrimaryButton(
                                 onClick = {
                                     enabled = true
@@ -136,9 +130,6 @@ class MainActivity : ComponentActivity() {
                             )
 
                             OutlinedButton(
-                                buttonPadding = PaddingValues(
-                                    horizontal = 12.dp
-                                ),
                                 onClick = {}
                             ) {
                                 Text(
@@ -147,83 +138,7 @@ class MainActivity : ComponentActivity() {
                             }
 
 
-//                            AlertDialog(
-//                                onDismissRequest = {}
-//                            )
-//                            OutlinedChip(
-//                               // enabled = false,
-//                                content = {
-//                                    Text(
-//                                        text = "Primary Chip"
-//                                    )
-//                                },
-//                                leadingIcon = {
-//                                    Icon(
-//                                        imageVector = Icons.Rounded.AccessAlarm,
-//                                        contentDescription = ""
-//                                    )
-//                                },
-//                            )
 //
-//                            Spacer(
-//                                modifier = Modifier.height(8.dp)
-//                            )
-//                            SecondaryChip(
-//                                content = {
-//                                    Text(
-//                                        text = "Primary Chip"
-//                                    )
-//                                },
-//                                leadingIcon = {
-//                                    Icon(
-//                                        imageVector = Icons.Rounded.AccessAlarm,
-//                                        contentDescription = ""
-//                                    )
-//                                },
-//                            )
-//                            Spacer(
-//                                modifier = Modifier.height(8.dp)
-//                            )
-//                            SuccessChip(
-//                              //  enabled = false,
-//                                content = {
-//                                    Text(
-//                                        text = "Success Chip"
-//                                    )
-//                                },
-//                                leadingIcon = {
-//                                    Icon(
-//                                        imageVector = Icons.Rounded.Code,
-//                                        contentDescription = ""
-//                                    )
-//                                },
-//
-//                                )
-//
-//                            Spacer(
-//                                modifier = Modifier.height(8.dp)
-//                            )
-//
-//                            ErrorChip(
-//                                content = {
-//                                    Text(
-//                                        text = "Error Chip"
-//                                    )
-//                                },
-//                                leadingIcon = {
-//                                    Icon(
-//                                        imageVector = Icons.Rounded.Error,
-//                                        contentDescription = ""
-//                                    )
-//                                },
-//                            )
-//                            SecondaryButton(
-//                                onClick = {}
-//                            ) {
-//                                Text(
-//                                    text = "Primary"
-//                                )
-//                            }
                         }
                     }
                 )
