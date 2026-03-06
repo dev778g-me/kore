@@ -10,17 +10,20 @@ import io.jadu.nivi.presentation.utils.squircleShape.SquircleShape
 
 object KoreDefaults{
     val defaultLightColorScheme = KoreColors(
-        background = TailwindColors.Neutral100,
+        // background and background variant
+        background = TailwindColors.Neutral50,
         onBackGround = TailwindColors.Neutral900,
         backGroundVariant = TailwindColors.Neutral300,
         onBackGroundVariant = TailwindColors.Neutral800,
 
+        // disabled colors
         disabled = TailwindColors.Neutral200,
         onDisabled = TailwindColors.Neutral400,
 
+        // primary colors
         primary = TailwindColors.Blue500,
         onPrimary = TailwindColors.Blue50,
-        primaryContainer = TailwindColors.Blue200,
+        primaryContainer = TailwindColors.Blue100,
         onPrimaryContainer = TailwindColors.Blue500,
 
         secondary = TailwindColors.Sky500,
@@ -28,33 +31,34 @@ object KoreDefaults{
         secondaryContainer = TailwindColors.Sky300,
         onSecondaryContainer = TailwindColors.Sky900,
 
-        tertiary = TailwindColors.Purple600,
-        onTertiary = TailwindColors.White,
-        tertiaryContainer = TailwindColors.Purple100,
-        onTertiaryContainer = TailwindColors.Purple900,
 
+
+        // success colors
         success = TailwindColors.Green500,
-        onSuccess = TailwindColors.Gray100,
+        onSuccess = TailwindColors.Green100,
 
+        // error colors
         error = TailwindColors.Red600,
-        onError = TailwindColors.White,
+        onError = TailwindColors.Red50,
         transParentColor = Color.Transparent
     )
 
 
     val defaultDarkColorScheme = KoreColors(
+        // background and background variant
         background = TailwindColors.Neutral950,
-        onBackGround = TailwindColors.Neutral100,
+        onBackGround = TailwindColors.Blue50,
         backGroundVariant = TailwindColors.Neutral800,
         onBackGroundVariant = TailwindColors.Neutral200,
 
-
+        // disabled colors
         disabled = TailwindColors.Neutral900,
         onDisabled = TailwindColors.Neutral700,
 
+        // primary colors
         primary = TailwindColors.Blue600,
         onPrimary = TailwindColors.Blue100,
-        primaryContainer = TailwindColors.Blue300,
+        primaryContainer = TailwindColors.Blue200,
         onPrimaryContainer = TailwindColors.Blue900,
 
         secondary = TailwindColors.Sky600,
@@ -62,16 +66,15 @@ object KoreDefaults{
         secondaryContainer = TailwindColors.Sky700,
         onSecondaryContainer = TailwindColors.Blue700,
 
-        tertiary = TailwindColors.Purple700,
-        onTertiary = TailwindColors.Purple200,
-        tertiaryContainer = TailwindColors.Purple800,
-        onTertiaryContainer = TailwindColors.Purple100,
 
+
+        // success colors
         success = TailwindColors.Green700,
-        onSuccess = TailwindColors.Gray200,
+        onSuccess = TailwindColors.Green200,
 
+        // error colors
         error = TailwindColors.Red500,
-        onError = TailwindColors.Gray100,
+        onError = TailwindColors.Red100,
         transParentColor = Color.Transparent
     )
 
