@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Canvas
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalDensity
@@ -41,6 +41,32 @@ fun HorizontalSeparator(
     }
 }
 
+// gradient
+@Composable
+fun HorizontalGradientSeparator(
+    modifier: Modifier = Modifier,
+    thickness : Dp= SeparatorDefaults.defaultSeparatorThickness,
+    separatorCap: StrokeCap = SeparatorDefaults.defaultSeparatorCap,
+    brush: Brush= SeparatorDefaults.defaultBrush,
+) {
+    val density = LocalDensity.current
+    Canvas(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(thickness)
+    ){
+        drawLine(
+            cap = separatorCap,
+            brush = brush,
+            strokeWidth = with(density) {
+                thickness.toPx()
+            },
+            start = Offset(x = 0f, y = thickness.toPx()/2),
+            end = Offset(x = size.width, y = thickness.toPx()/2)
+        )
+    }
+}
+
 
 @Composable
 fun VerticalSeparator(
@@ -60,7 +86,24 @@ fun VerticalSeparator(
     }
 }
 
-
+// gradient Variant
+@Composable
+fun VerticalGradientSeparator(
+    modifier: Modifier = Modifier,
+    thickness: Dp = SeparatorDefaults.defaultSeparatorThickness,
+    separatorCap: StrokeCap = SeparatorDefaults.defaultSeparatorCap,
+    brush: Brush= SeparatorDefaults.defaultBrush,
+) {
+    Canvas(modifier = modifier.fillMaxHeight().width(thickness)) {
+        drawLine(
+            cap = separatorCap,
+            brush = brush,
+            strokeWidth = thickness.toPx(),
+            start = Offset(x = thickness.toPx()/2, y = 0f),
+            end = Offset(x = thickness.toPx()/2, y =size.height)
+        )
+    }
+}
 
 
 
@@ -77,6 +120,13 @@ object SeparatorDefaults{
     ) = SeparatorColors(
         separatorColor = separatorColor
     )
+
+
+    val defaultBrush: Brush = Brush.linearGradient(
+        colors = listOf(Color.Red, Color.Blue)
+    )
+
+
 }
 
 data class SeparatorColors(
